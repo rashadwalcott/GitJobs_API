@@ -19,12 +19,11 @@ class UsersController < ApplicationController
 
  # POST /users
  def create
-   user = User.create(user_params)
-   byebug
-   if user.valid?
-     render json: {token:create_token(user.id)}
+   @user = User.create(user_params)
+   if @user.valid?
+     render json: {user: @user, token: create_token(@user.id)}
    else
-     render json: {errors:user.errors.full_messages}, status: :unprocessable_entity
+     render json: {errors: user.errors.full_messages}, status: :unprocessable_entity
    end
  end
 
