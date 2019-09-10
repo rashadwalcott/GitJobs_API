@@ -20,6 +20,7 @@ class UsersController < ApplicationController
  # POST /users
  def create
    user = User.create(user_params)
+   byebug
    if user.valid?
      render json: {token:create_token(user.id)}
    else
