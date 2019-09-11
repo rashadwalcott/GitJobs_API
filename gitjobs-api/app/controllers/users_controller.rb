@@ -2,7 +2,7 @@ class UsersController < ApplicationController
  before_action :set_user, only: [:show, :update, :destroy]
 
  def profile
-   render json: current_user
+   render json: current_user, include: [:jobs]
  end
 
  # GET /users
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
  # GET /users/1
  def show
-   render json: @user
+   render json: @user, include: [:jobs]
  end
 
  # POST /users
